@@ -38,7 +38,7 @@ class Venue(db.Model):
     phone = db.Column(db.String(120))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
-    genres = db.Column(db.String(120))
+    genres = db.Column(ARRAY(db.String(120)))
 
     def __repr__(self):
       return f'<Venue Name:{self.name}  Genre:{self.genres}>'
