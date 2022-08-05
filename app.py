@@ -39,6 +39,8 @@ class Venue(db.Model):
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
     genres = db.Column(db.String(120))
+    seeking_talent = db.column(db.Boolean())
+    seeking_description = db.Column(db.String())
 
     def __repr__(self):
       return f'<Venue Name:{self.name}  Genre:{self.genres}>'
@@ -233,8 +235,8 @@ def create_venue_submission():
   facebook_link = request.form['facebook_link']
   image_link = request.form['image_link']
   website_link = request.form['website_link']
-  #seeking_talent = request.form['seeking_talent']
-  #seeking_description = request.form['seeking_description']
+  seeking_talent = request.form['seeking_talent']
+  seeking_description = request.form['seeking_description']
 
   venue = Venue(
     name = name, 
@@ -245,7 +247,7 @@ def create_venue_submission():
     image_link = image_link,
     facebook_link = facebook_link)
 
-  print(venue)
+  print(request.form)
 
   # on successful db insert, flash success
   flash('Venue ' + request.form['name'] + ' was successfully listed!')
