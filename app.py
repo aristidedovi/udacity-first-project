@@ -42,6 +42,8 @@ class Venue(db.Model):
     seeking_talent = db.column(db.Boolean())
     seeking_description = db.Column(db.String())
     website_link = db.Column(db.String(120))
+    show = relationship("Show", back_populates="Venue", uselist=False)
+
 
     def __repr__(self):
       return f'<Venue Name:{self.name}  Genre:{self.genres}>'
@@ -62,6 +64,8 @@ class Artist(db.Model):
     seeking_venue = db.Column(db.Boolean())
     seeking_description = db.Column(db.String())
     website_link = db.Column(db.String(120))
+    show = relationship("Show", back_populates="Artist", uselist=False)
+
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
@@ -69,8 +73,8 @@ class Show(db.Model):
   __tablename__ = 'Show'
 
   id = db.Column(db.Integer, primary_key=True)
-  artist_id =  db.Column()
-  venue_id = db.Column()
+  artist_id =  db.Column(db.Integer, ForeignKey("Artist.id"))
+  venue_id = db.Column(db.Integer, ForeignKey('Venue.id'))
   start_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
 
