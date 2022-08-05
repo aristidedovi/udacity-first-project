@@ -41,6 +41,7 @@ class Venue(db.Model):
     genres = db.Column(db.String(120))
     seeking_talent = db.column(db.Boolean())
     seeking_description = db.Column(db.String())
+    website_link = db.Column(db.String(120))
 
     def __repr__(self):
       return f'<Venue Name:{self.name}  Genre:{self.genres}>'
@@ -55,11 +56,23 @@ class Artist(db.Model):
     city = db.Column(db.String(120))
     state = db.Column(db.String(120))
     phone = db.Column(db.String(120))
-    genres = db.Column(db.ARRAY(db.String))
+    genres = db.Column(db.String(120))
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
+    seeking_venue = db.Column(db.Boolean())
+    seeking_description = db.Column(db.String())
+    website_link = db.Column(db.String(120))
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
+
+class Show(db.Model):
+  __tablename__ = 'Show'
+
+  id = db.Column(db.Integer, primary_key=True)
+  artist_id =  db.Column()
+  venue_id = db.Column()
+  start_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
 
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 
@@ -244,6 +257,9 @@ def create_venue_submission():
     address = address,
     phone = phone,
     genres = genres,
+    seeking_talent = seeking_talent,
+    seeking_description = seeking_description,
+    website_link = website_link,
     image_link = image_link,
     facebook_link = facebook_link)
 
@@ -545,4 +561,30 @@ if __name__ == '__main__':
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+'''
+
+'''
+ImmutableMultiDict(
+  [
+    ('name', 'Aristide Kangni Dovi'), 
+    ('city', 'Dakar'), ('state', 'AL'), 
+    ('address', 'vdbfg'), 
+    ('phone', '221778744949'), 
+    ('genres', 'Alternative'), 
+    ('genres', 'Blues'), 
+    ('genres', 'Classical'), 
+    ('genres', 'Country'), 
+    ('genres', 'Electronic'), 
+    ('genres', 'Folk'), 
+    ('genres', 'Funk'), 
+    ('genres', 'Hip-Hop'), 
+    ('genres', 'Heavy Metal'), 
+    ('genres', 'Instrumental'), 
+    ('genres', 'Jazz'), 
+    ('facebook_link', 'https://app.smartsupp.com/app/dashboard/conversations/cojfqHSaH2Tc'), 
+    ('image_link', 'https://app.smartsupp.com/app/dashboard/conversations/cojfqHSaH2Tc'), 
+    ('website_link', 'https://app.smartsupp.com/app/dashboard/conversations/cojfqHSaH2Tc'), 
+    ('seeking_talent', 'y'), 
+    ('seeking_description', 'ddfd')
+    ])
 '''
