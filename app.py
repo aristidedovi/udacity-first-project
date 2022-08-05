@@ -245,7 +245,7 @@ def create_venue_submission():
     image_link = image_link,
     facebook_link = facebook_link)
 
-  print(request.form.data)
+  print(request.form.get('genres'))
 
   # on successful db insert, flash success
   flash('Venue ' + request.form['name'] + ' was successfully listed!')
