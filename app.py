@@ -40,6 +40,9 @@ class Venue(db.Model):
     facebook_link = db.Column(db.String(120))
     genres = db.Column(db.String(120))
 
+    def __repr__(self):
+      return f'<Venue Name:{self.name}  Genre:{self.genres}>'
+
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
 class Artist(db.Model):
