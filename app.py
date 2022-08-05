@@ -229,7 +229,7 @@ def create_venue_submission():
   state = request.form['state']
   address = request.form['address']
   phone = request.form['phone']
-  genres = request.form['genres'].data
+  genres = request.form['genres']
   facebook_link = request.form['facebook_link']
   image_link = request.form['image_link']
   website_link = request.form['website_link']
@@ -245,7 +245,7 @@ def create_venue_submission():
     image_link = image_link,
     facebook_link = facebook_link)
 
-  print(venue)
+  print(request.form)
 
   # on successful db insert, flash success
   flash('Venue ' + request.form['name'] + ' was successfully listed!')
