@@ -237,7 +237,6 @@ def create_venue_submission():
     state = state, 
     address = address,
     phone = phone,
-    genres = genres,
     image_link = image_link,
     facebook_link = facebook_link)
 
