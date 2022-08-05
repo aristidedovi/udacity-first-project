@@ -232,8 +232,14 @@ def create_venue_submission():
   seeking_talent = request.form['seeking_talent']
   seeking_description = request.form['seeking_description']
 
-  venue = Venue(name, state, address, phone, genres, facebook_link,
-  image_link, website_link, seeking_talent, seeking_description)
+  venue = Venue(
+    name = name, 
+    state = state, 
+    address = address,
+    phone = phone,
+    genres = genres,
+    image_link = image_link,
+    facebook_link = facebook_link)
 
   print(venue)
 
