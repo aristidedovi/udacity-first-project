@@ -112,7 +112,7 @@ def venues():
   #       num_upcoming_shows should be aggregated based on number of upcoming shows per venue.
   data=[{
     "city": "San Francisco",
-    "state": "CA",
+    #"state": "CA",
     "venues": [{
       "id": 1,
       "name": "The Musical Hop",
