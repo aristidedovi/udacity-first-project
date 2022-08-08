@@ -42,7 +42,7 @@ class Venue(db.Model):
     seeking_talent = db.Column(db.Boolean())
     seeking_description = db.Column(db.String())
     website_link = db.Column(db.String(120))
-    show = db.qqrelationship("Show", back_populates="Venue", uselist=False)
+    show = db.relationship("Show", back_populates="Venue", uselist=False)
 
 
     def __repr__(self):
